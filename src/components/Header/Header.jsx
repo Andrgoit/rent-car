@@ -4,10 +4,12 @@ import LangBtn from "../LangBtn/LangBtn";
 
 export default function Header() {
   return (
-    <div className=" flex justify-between p-4 bg-slate-400">
+    <div className=" flex justify-between bg-slate-500 p-4 items-center">
       <Logo />
-      <Nav />
-      <LangBtn />
+      <div className=" hidden sm:flex gap-3">
+        <Nav />
+        <LangBtn />
+      </div>
     </div>
   );
 }
