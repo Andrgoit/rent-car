@@ -4,7 +4,10 @@ import items from "./items";
 export default function Nav() {
   const elements = items.map(({ id, label, href }) => (
     <li key={id}>
-      <NavLink to={href} className="text-white">
+      <NavLink
+        to={href}
+        className="text-white py-3 px-12 font-normal hover:bg-blue_primary rounded-lg "
+      >
         {label}
       </NavLink>
     </li>
