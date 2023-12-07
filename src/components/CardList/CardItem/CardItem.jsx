@@ -1,5 +1,6 @@
 import React from "react";
 import noImg from "../../../assets/image/noImage.jpg";
+import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 
 export default function CardItem({ item }) {
   const {
@@ -26,14 +27,21 @@ export default function CardItem({ item }) {
   return (
     <li className="w-[274px] h-[426px] mt-[50px] shadow-lg cursor-pointer hover:scale-105 transition-all duration-200">
       <div
-        className="w-[274px] h-[268px] rounded-[14px] overflow-hidden"
+        className="w-[274px] h-[268px] rounded-[14px] overflow-hidden relative"
         style={{
           background: `url(${noImg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <img src={img} alt={`${make} ${model}`} className="w-full h-full " />
+        <img
+          src={img}
+          alt={`${make} ${model}`}
+          className="w-full h-full object-cover "
+        />
+        <div className=" fill-transparent hover:fill-blue_secondary absolute w-[18px] h-[18px] top-[14px] right-[14px]">
+          <Heart />
+        </div>
       </div>
       <div className=" mt-4 flex justify-between items-center font-Manrope">
         <div>
