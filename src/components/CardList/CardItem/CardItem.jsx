@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import noImg from "../../../assets/image/noImage.jpg";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+import ModalWindow from "../../ModalWindow/ModalWindow";
 
 export default function CardItem({ item }) {
+  const [modalIsOpen, setIsOpen] = useState(false);
+
   const {
-    id,
     year,
     make,
     model,
     type,
     img,
-    description,
-    fuelConsumption,
-    engineSize,
     accessories,
-    functionalities,
     rentalPrice,
     rentalCompany,
     address,
-    rentalConditions,
     mileage,
   } = item;
 
   const city = address.split(",")[1];
   const country = address.split(",")[2];
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <li className="w-[274px] h-[426px] mt-[50px] shadow-lg cursor-pointer hover:scale-105 transition-all duration-200">
       <div
@@ -64,9 +66,19 @@ export default function CardItem({ item }) {
         <span className=" px-[6px]">|</span>
         {accessories[0]}
       </div>
-      <button className=" mt-[28px] font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl">
-        Lern more
+      <button
+        className=" mt-[28px] font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl"
+        onClick={() => setIsOpen(!modalIsOpen)}
+      >
+        Learn more
       </button>
+      {modalIsOpen && (
+        <ModalWindow
+          item={item}
+          closeModal={closeModal}
+          modalIsOpen={modalIsOpen}
+        />
+      )}
     </li>
   );
 }
