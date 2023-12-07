@@ -16,7 +16,7 @@ export default function BrandSelector({ setBrand }) {
     <div className="flex flex-col justify-start gap-2">
       <span className=" font-normal text-sm text-text_primaty">Car brands</span>
       <Select
-        placeholder={"Enter the text"}
+        placeholder="Enter the text"
         isSearchable
         options={options}
         onChange={setBrand}

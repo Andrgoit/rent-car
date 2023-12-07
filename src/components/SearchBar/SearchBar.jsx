@@ -9,7 +9,7 @@ export default function SearchBar() {
   const [mileageFrom, setMileageFrom] = useState(null);
   const [mileageTo, setMileageTo] = useState(null);
 
-  const handelSubmit = () => {
+  const handlerSubmit = () => {
     console.log("brand", brand);
     console.log("price", price);
     console.log("mileageFrom", mileageFrom);
@@ -35,7 +35,7 @@ export default function SearchBar() {
       <PriceSelector setPrice={setPrice} />
       <MileageSelector onChange={changeMileage} />
       <button
-        onClick={handelSubmit}
+        onClick={handlerSubmit}
         className=" py-3 px-11 text-white bg-blue_primary hover:bg-blue_secondary rounded-xl"
       >
         Search

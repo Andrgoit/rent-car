@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        Manrope: "Manrope",
+      },
       colors: {
         blue_primary: "#3470FF",
         blue_secondary: "#0B44CD",
