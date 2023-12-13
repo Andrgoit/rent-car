@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { HeroBg, Hero } from "../../components";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 export default function HomePage() {
-  useEffect(() => {
-    toast.error("Это знакомительный сайт. Не оставляйте свои личные данные");
-  }, []);
+  // useEffect(() => {
+  //   toast.error("Это ознакомительный сайт. Не оставляйте свои личные данные");
+  // }, []);
   return (
     <div>
       <HeroBg>

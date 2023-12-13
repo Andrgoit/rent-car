@@ -1,6 +1,6 @@
 import Logo from "../Logo/Logo";
 import Nav from "../Nav/Nav";
-import LangBtn from "../LangBtn/LangBtn";
+// import LangBtn from "../LangBtn/LangBtn";
 
 export default function Header() {
   return (
@@ -9,7 +9,7 @@ export default function Header() {
         <Logo />
         <div className=" hidden sm:flex gap-3 items-center">
           <Nav />
-          <LangBtn />
+          {/* <LangBtn /> */}
         </div>
       </div>
     </div>

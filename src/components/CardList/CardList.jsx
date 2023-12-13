@@ -1,6 +1,5 @@
 import cards from "../../data/advertsCars.json";
 import CardItem from "./CardItem/CardItem";
-const card = [cards[0]];
 
 export default function CardList() {
   return (

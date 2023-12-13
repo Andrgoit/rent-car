@@ -8,6 +8,7 @@ const customStyles = {
     borderRadius: "14px",
     width: "224px",
     height: "48px",
+    border: "none",
   }),
 };
 

@@ -22,22 +22,27 @@ const customStyles = {
     borderRadius: "14px",
     width: "125px",
     height: "48px",
+    position: "relative",
+    paddingLeft: "43px",
+    outline: "none",
+    border: "none",
   }),
 };
 
 export default function PriceSelector({ setPrice }) {
   return (
-    <div className="flex flex-col justify-start gap-2">
+    <div className="flex flex-col justify-start gap-2 relative">
       <span className=" font-normal text-sm text-text_primaty">
         Price/ 1 hour
       </span>
       <Select
-        placeholder="To $"
+        placeholder="$"
         isSearchable
         options={options}
         onChange={setPrice}
         styles={customStyles}
       />
+      <span className=" absolute left-[18px] top-10">To</span>
     </div>
   );
 }

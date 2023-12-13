@@ -39,6 +39,7 @@ export default function CardItem({ item }) {
         <img
           src={img}
           alt={`${make} ${model}`}
+          // loading="lazy"
           className="w-full h-full object-cover "
         />
         <div className=" fill-transparent hover:fill-blue_secondary absolute w-[18px] h-[18px] top-[14px] right-[14px]">

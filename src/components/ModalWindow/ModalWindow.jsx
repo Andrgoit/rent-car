@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 Modal.setAppElement(document.getElementById("root"));
 
@@ -33,7 +33,6 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
     accessories,
     functionalities,
     rentalPrice,
-    rentalCompany,
     address,
     rentalConditions,
     mileage,
@@ -52,8 +51,11 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
       contentLabel="Example Modal"
       shouldCloseOnOverlayClick={true}
     >
-      <div className="p-10 reletive">
-        <button onClick={closeModal} className=" absolute top-4 right-4">
+      <div className="p-10 relative">
+        <button
+          onClick={closeModal}
+          className=" absolute top-4 right-4 hover:scale-110"
+        >
           <IoMdClose size={24} />
         </button>
         <div className="max-w-[461px] max-h-[248px] rounded-xl overflow-hidden">
@@ -108,16 +110,19 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
               {item}
             </span>
           ))}
-          <span className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]">
-            Mileage: {mileage}
+          <span className="bg-select_bg text-xs font-Manrope font-normal text-text_header py-[7px] px-[14px] rounded-[35px]">
+            Mileage: <span className=" text-blue_primary ">{mileage}</span>
           </span>
-          <span className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]">
-            Price: {rentalPrice}
+          <span className="bg-select_bg text-xs font-Manrope text-text_header py-[7px] px-[14px] rounded-[35px]">
+            Price: <span className=" text-blue_primary ">{rentalPrice}</span>
           </span>
         </div>
-        <button className=" mt-6 py-3 px-12 text-white bg-blue_primary hover:bg-blue_secondary rounded-xl">
+        <Link
+          to="/order"
+          className="inline-block mt-6 py-3 px-12 text-white bg-blue_primary hover:bg-blue_secondary rounded-xl"
+        >
           Rental Car
-        </button>
+        </Link>
       </div>
     </Modal>
   );
