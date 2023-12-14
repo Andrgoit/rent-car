@@ -648,5 +648,187 @@
     "address": "321 Example Lane, Kharkiv, Ukraine",
     "rentalConditions": "Minimum age: 21\nValid driver's license\nSecurity deposit and insurance required",
     "mileage": 6234
+  },
+  {
+    "id": 900,
+    "year": 2018,
+    "make": "Volvo",
+    "model": "XC90",
+    "type": "SUV",
+    "img": "https://i.infocar.ua/i/2/5878/116502/1920x.jpg",
+    "description": "The Volvo XC90 is a premium SUV that offers exceptional safety, advanced technology, and elegant design.",
+    "fuelConsumption": "8.3",
+    "engineSize": "2.0L 4-cylinder",
+    "accessories": [
+      "Nappa leather seats",
+      "Bowers & Wilkins premium sound system",
+      "Head-up display"
+    ],
+    "functionalities": [
+      "IntelliSafe advanced safety features",
+      "Pilot Assist semi-autonomous driving",
+      "Four-zone automatic climate control"
+    ],
+    "rentalPrice": "$45",
+    "rentalCompany": "Premium Auto Rentals",
+    "address": "456 Example Avenue, Lviv, Ukraine",
+    "rentalConditions": "Minimum age: 21\nValid driver's license\nProof of insurance required",
+    "mileage": 5352
+  },
+  {
+    "id": 901,
+    "year": 2021,
+    "make": "Kia",
+    "model": "Rio",
+    "type": "Sedan, Hatchback",
+    "img": "https://media.autoexpress.co.uk/image/private/s--X-WVjvBW--/f_auto,t_content-image-full-desktop@1/v1590167871/autoexpress/2020/05/Kia%20Rio%20facelift%202020.jpg",
+    "description": "The Kia Rio is a versatile and fuel-efficient vehicle available in both sedan and hatchback body styles, offering a comfortable cabin, modern features, and a smooth driving experience, making it an attractive choice for urban commuters.",
+    "fuelConsumption": "6.2",
+    "engineSize": "1.6L 4-cylinder",
+    "accessories": [
+      "Apple CarPlay and Android Auto integration",
+      "Smart Key with Push Button Start",
+      "Automatic climate control"
+    ],
+    "functionalities": [
+      "Front-Wheel Drive",
+      "Electronic Stability Control",
+      "Rearview camera"
+    ],
+    "rentalPrice": "$50",
+    "rentalCompany": "Economy Car Rentals",
+    "address": "321 Example Lane, Kharkiv, Ukraine",
+    "rentalConditions": "Minimum age: 21\nValid driver's license\nSecurity deposit and insurance required",
+    "mileage": 6234
+  },
+  {
+    "id": 9028,
+    "year": 2021,
+    "make": "Land Rover",
+    "model": "Range Rover Sport",
+    "type": "SUV",
+    "img": "https://img.automoto.ua/thumb/1280-720/2/9/8/1/8/b/Land-Rover-Range-Rover-Sport-seryiy-Vnedorozhnik-Krossover-2020-32829126.jpeg?url=aHR0cHM6Ly9wcm9kLnBpY3R1cmVzLmF1dG9zY291dDI0Lm5ldC9saXN0aW5nLWltYWdlcy83NmVlMjMyNC02NWJkLTQ0Y2QtYjcxZi1iODFlZjViZGM0OGNfM2FhNTJmNTgtMzUxNC00ZmNmLWFmZmMtMDdlNDk1NTFiMjlmLmpwZy8xMjgweDk2MC5qcGc%3D",
+    "description": "The Land Rover Range Rover Sport is a premium SUV that offers a perfect blend of luxury, off-road capability, and dynamic performance, providing a refined driving experience both on and off the road.",
+    "fuelConsumption": "11.8",
+    "engineSize": "3.0L V6",
+    "accessories": [
+      "Premium Windsor leather seats",
+      "Meridian surround sound system",
+      "Adaptive Dynamics suspension"
+    ],
+    "functionalities": [
+      "All-Wheel Drive",
+      "Terrain Response 2 system",
+      "Power-operated gesture tailgate"
+    ],
+    "rentalPrice": "$300",
+    "rentalCompany": "Luxury SUV Rentals",
+    "address": "654 Example Street, Lviv, Ukraine",
+    "rentalConditions": "Minimum age: 25\nValid driver's license\nSecurity deposit and insurance required",
+    "mileage": 4856
+  },
+  {
+    "id": 9029,
+    "year": 2021,
+    "make": "Volvo",
+    "model": "XC60",
+    "type": "SUV",
+    "img": "https://cdn0.riastatic.com/photosnew/auto/photo/volvo_xc60__467410305f.jpg",
+    "description": "The Volvo XC60 is a luxurious and versatile SUV that combines Scandinavian design, advanced safety features, and a comfortable driving experience, making it an ideal choice for families and adventure enthusiasts.",
+    "fuelConsumption": "8.5",
+    "engineSize": "2.0L 4-cylinder",
+    "accessories": [
+      "Leather upholstery",
+      "Panoramic sunroof",
+      "Harman Kardon premium sound system"
+    ],
+    "functionalities": [
+      "All-Wheel Drive",
+      "City Safety collision avoidance technology",
+      "Power tailgate"
+    ],
+    "rentalPrice": "$150",
+    "rentalCompany": "Premium Car Rentals",
+    "address": "987 Example Road, Dnipro, Ukraine",
+    "rentalConditions": "Minimum age: 25\nValid driver's license\nSecurity deposit and insurance required",
+    "mileage": 6618
+  },
+  {
+    "id": 9030,
+    "year": 2012,
+    "make": "Audi",
+    "model": "A5",
+    "type": "Convertible",
+    "img": "https://img.autoabc.lv/Audi-A5/Audi-A5_2011_Kupeja_15111711532_9.jpg",
+    "description": "The Audi A5 is a stylish and refined convertible that offers a perfect blend of elegance, cutting-edge technology, and exhilarating driving dynamics.",
+    "fuelConsumption": "8.5",
+    "engineSize": "2.0L Inline-4",
+    "accessories": [
+      "Bang & Olufsen 3D sound system",
+      "Audi Virtual Cockpit",
+      "Audi Drive Select"
+    ],
+    "functionalities": [
+      "Front-Wheel Drive",
+      "Quattro all-wheel drive available",
+      "Power-folding acoustic soft-top"
+    ],
+    "rentalPrice": "$150",
+    "rentalCompany": "Luxury Car Rentals",
+    "address": "987 Example Lane, Dnipro, Ukraine",
+    "rentalConditions": "Minimum age: 25\nValid driver's license\nSecurity deposit and insurance required",
+    "mileage": 4635
+  },
+  {
+    "id": 9031,
+    "year": 1998,
+    "make": "Chevrolet",
+    "model": "Camaro",
+    "type": "Convertible",
+    "img": "https://tech.carta.ua/540x405/upload/photo/35/1200_1.jpeg",
+    "description": "The Chevrolet Camaro is an American muscle car legend with a rich heritage, boasting aggressive styling, powerful engines, and exhilarating performance.",
+    "fuelConsumption": "13.5",
+    "engineSize": "5.7L V8",
+    "accessories": [
+      "Leather upholstery",
+      "Bose premium sound system",
+      "Performance suspension"
+    ],
+    "functionalities": [
+      "Rear-Wheel Drive",
+      "Limited-slip differential",
+      "Power-operated convertible top"
+    ],
+    "rentalPrice": "$200",
+    "rentalCompany": "Muscle Car Rentals",
+    "address": "123 Example Street, Lviv, Ukraine",
+    "rentalConditions": "Minimum age: 25\nValid driver's license\nSecurity deposit and insurance required",
+    "mileage": 6330
+  },
+  {
+    "id": 9032,
+    "year": 2009,
+    "make": "Mitsubishi",
+    "model": "Outlander",
+    "type": "SUV",
+    "img": "https://media.ed.edmunds-media.com/mitsubishi/outlander/2010/oem/2010_mitsubishi_outlander_4dr-suv_gt_fq_oem_3_1600.jpg",
+    "description": "The Mitsubishi Outlander is a practical and fuel-efficient SUV with a stylish design and a range of modern features.",
+    "fuelConsumption": "7.9",
+    "engineSize": "2.4L 4-cylinder",
+    "accessories": [
+      "Heated front seats",
+      "Rockford Fosgate premium audio system",
+      "Power liftgate"
+    ],
+    "functionalities": [
+      "Super All-Wheel Control",
+      "Multi-View camera system",
+      "Bluetooth hands-free system"
+    ],
+    "rentalPrice": "$30",
+    "rentalCompany": "City Car Rentals",
+    "address": "654 Example Avenue, Lviv, Ukraine",
+    "rentalConditions": "Minimum age: 21\nValid driver's license\nProof of insurance required",
+    "mileage": 5374
   }
 ]
