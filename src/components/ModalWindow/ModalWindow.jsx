@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-Modal.setAppElement(document.getElementById("root"));
+Modal.setAppElement(document.getElementById("modal"));
 
 const customStyles = {
   overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
@@ -40,7 +40,6 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
 
   const city = address.split(",")[1];
   const country = address.split(",")[2];
-
   const rentalConditionsArray = rentalConditions.split("\n");
 
   return (
