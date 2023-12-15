@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 Modal.setAppElement(document.getElementById("modal"));
 
 const customStyles = {
-  overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+  overlay: { backgroundColor: "rgba(0, 0, 0, 0.7)", zIndex: 20 },
   content: {
     top: "50%",
     left: "50%",

@@ -4,6 +4,8 @@ import CardList from "../../components/CardList/CardList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import fetchAdverts from "../../api/fetchAdverts";
 
+import bg from "../../assets/image/bg.jpg";
+
 export default function CatalogPage() {
   const [cards, setCards] = useState(null);
   const [page, setPage] = useState(1);
@@ -26,7 +28,16 @@ export default function CatalogPage() {
   }, [page]);
 
   return (
-    <div className="">
+    <div
+      className=" min-h-screen"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <div className="styledContainer flex flex-col justify-center items-center">
         <SearchBar />
         {cards && <CardList cards={cards} />}

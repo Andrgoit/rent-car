@@ -7,10 +7,10 @@ export default function HomePage() {
   //   toast.error("Это ознакомительный сайт. Не оставляйте свои личные данные");
   // }, []);
   return (
-    <div>
+    <>
       <HeroBg>
         <Hero />
       </HeroBg>
-    </div>
+    </>
   );
 }

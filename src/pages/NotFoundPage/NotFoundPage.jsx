@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/image/404.svg";
+import bg from "../../assets/image/bg.jpg";
 
 export default function NotFoundPage() {
   return (
-    <div>
-      <div className="py-10 styledContainer flex flex-col items-center">
-        <span className=" font-medium text-5xl text-black">Whoops!</span>
+    <div
+      className=" min-h-screen"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div className=" text-white pt-32 styledContainer flex flex-col items-center">
+        <span className=" font-medium text-5xl">Whoops!</span>
         <span className=" mt-6">Sorry, this page is not available.</span>
         <div className=" py-10">
           <img src={img} alt="not found page" />

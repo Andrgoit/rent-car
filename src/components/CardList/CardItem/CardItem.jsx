@@ -27,7 +27,7 @@ export default function CardItem({ item }) {
   };
 
   return (
-    <li className="w-[274px] h-[426px] mt-[50px] shadow-lg cursor-pointer hover:scale-105 transition-all duration-200">
+    <li className="w-[274px] h-[426px] mt-[50px] backdrop-blur-md  bg-black/50 flex flex-col justify-between rounded-[14px] overflow-hidden">
       <div
         className="w-[274px] h-[268px] rounded-[14px] overflow-hidden relative"
         style={{
@@ -39,20 +39,20 @@ export default function CardItem({ item }) {
         <img
           src={img}
           alt={`${make} ${model}`}
-          // loading="lazy"
+          loading="lazy"
           className="w-full h-full object-cover "
         />
-        <div className=" fill-transparent hover:fill-blue_secondary absolute w-[18px] h-[18px] top-[14px] right-[14px]">
+        <div className=" cursor-pointer fill-transparent hover:fill-blue_secondary absolute w-[18px] h-[18px] top-[14px] right-[14px]">
           <Heart />
         </div>
       </div>
-      <div className=" mt-4 flex justify-between items-center font-Manrope">
+      <div className=" px-1 mt-4 flex justify-between items-center font-Manrope text-white">
         <div>
           {make} <span className="text-blue_primary">{model}, </span> {year}
         </div>
-        {rentalPrice}
+        <span className="text-orange-300">{rentalPrice}</span>
       </div>
-      <div className=" h-10 overflow-y-hidden mt-2 flex flex-wrap font-Manrope text-xs text-text_primaty">
+      <div className="px-2 h-8 overflow-y-hidden mt-2 flex flex-wrap font-Manrope text-xs text-text_primaty">
         {city}
         <span className=" px-[6px]">|</span>
         {country}
@@ -68,7 +68,7 @@ export default function CardItem({ item }) {
         {accessories[0]}
       </div>
       <button
-        className=" mt-[28px] font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl"
+        className=" font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl"
         onClick={() => setIsOpen(!modalIsOpen)}
       >
         Learn more
