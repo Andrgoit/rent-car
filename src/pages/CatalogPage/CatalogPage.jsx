@@ -8,38 +8,31 @@ import {
   selectCars,
   selectLoading,
   selectIsShowLoadBtn,
+  selectPage,
 } from "../../redux/cars/carsSelectors";
 
 import { fetchCars } from "../../redux/cars/carsOperations";
-import { clearCarList } from "../../redux/cars/carsSlice";
+import { clearCarList, nextPage, resetPage } from "../../redux/cars/carsSlice";
 import { clearOrder } from "../../redux/order/orderSlice";
 
 import bg from "../../assets/image/bg.jpg";
 
 export default function CatalogPage() {
-  const [page, setPage] = useState(1);
   const [filCars, setFilCars] = useState([]);
   const [filters, setFilters] = useState(null);
   const cars = useSelector(selectCars);
   const isLoading = useSelector(selectLoading);
   const isShowLoadBtn = useSelector(selectIsShowLoadBtn);
+  const page = useSelector(selectPage);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(clearOrder());
-    // dispatch(clearCarList());
-    const fetching = async () => {
-      dispatch(fetchCars(page));
-      // if (res.length < 8) {
-      //   setVisibleLoadMoreBtn(false);
-      // }
-      // if (page !== 1) {
-      //   setCards((prev) => [...prev, ...res]);
-      // } else {
-      //   setCards(res);
-      // }
-    };
-    fetching();
+    dispatch(resetPage());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCars(page));
   }, [dispatch, page]);
 
   // useEffect(() => {
@@ -150,7 +143,7 @@ export default function CatalogPage() {
         <SearchBar submit={() => {}} />
         {cars && <CardList cards={cars} />}
         {isShowLoadBtn && cars && (
-          <LoadMoreBtn onClick={() => setPage((prev) => prev + 1)} />
+          <LoadMoreBtn onClick={() => dispatch(nextPage())} />
         )}
       </div>
     </div>
