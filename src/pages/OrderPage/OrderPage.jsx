@@ -1,11 +1,21 @@
 import bg from "../../assets/image/bg.jpg";
-import cards from "../../data/advertsCars.json";
+
 import OrderInfo from "../../components/OrderInfo/OrderInfo";
 import OrderForm from "../../components/OrderForm/OrderForm";
+import { toast } from "react-toastify";
+
+import { useSelector } from "react-redux";
+import { selectOrder } from "../../redux/order/orderSelectors";
+import { useEffect } from "react";
 
 export default function OrderPage() {
-  const card = cards[0];
-  const { rentalPrice } = card;
+  const card = useSelector(selectOrder);
+
+  useEffect(() => {
+    toast.error(
+      "This is an introductory site. Don't share your real payment details here!"
+    );
+  }, []);
 
   return (
     <div
@@ -20,8 +30,12 @@ export default function OrderPage() {
     >
       <div className="pt-32 text-white styledContainer flex flex-col justify-center items-center">
         <div className=" w-full backdrop-blur-md border-black  bg-black/50 rounded-[14px] flex flex-col items-center">
-          <OrderInfo card={card} />
-          <OrderForm price={rentalPrice} />
+          {card ? (
+            <OrderInfo card={card} />
+          ) : (
+            <p>Sorry, but nothing has been selected to order</p>
+          )}
+          {card && <OrderForm price={card.rentalPrice} />}
         </div>
       </div>
     </div>

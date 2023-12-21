@@ -1,6 +1,9 @@
-import Modal from "react-modal";
 import { IoMdClose } from "react-icons/io";
+import Modal from "react-modal";
 import { Link } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { addOrder } from "../../redux/order/orderSlice";
 
 Modal.setAppElement(document.getElementById("modal"));
 
@@ -20,6 +23,8 @@ const customStyles = {
 };
 
 export default function ModalWindow({ item, closeModal, modalIsOpen }) {
+  const dispatch = useDispatch();
+
   const {
     id,
     year,
@@ -88,13 +93,13 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
         </p>
         <div className="mt-2 flex flex-wrap font-Manrope text-xs text-text_primaty">
           {accessories.map((item) => (
-            <span>
+            <span key={item}>
               {item}
               <span className=" px-[6px]">|</span>
             </span>
           ))}
           {functionalities.map((item) => (
-            <span>
+            <span key={item}>
               {item}
               <span className=" px-[6px]">|</span>
             </span>
@@ -105,7 +110,10 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
         </p>{" "}
         <div className=" mt-2 flex flex-wrap gap-2">
           {rentalConditionsArray.map((item) => (
-            <span className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]">
+            <span
+              key={item}
+              className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]"
+            >
               {item}
             </span>
           ))}
@@ -117,6 +125,7 @@ export default function ModalWindow({ item, closeModal, modalIsOpen }) {
           </span>
         </div>
         <Link
+          onClick={() => dispatch(addOrder(item))}
           to="/order"
           className="inline-block mt-6 py-3 px-12 text-white bg-blue_primary hover:bg-blue_secondary rounded-xl"
         >

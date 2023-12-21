@@ -2,30 +2,138 @@ import { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import CardList from "../../components/CardList/CardList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
-import fetchAdverts from "../../api/fetchAdverts";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectCars,
+  selectLoading,
+  selectIsShowLoadBtn,
+} from "../../redux/cars/carsSelectors";
+
+import { fetchCars } from "../../redux/cars/carsOperations";
+import { clearCarList } from "../../redux/cars/carsSlice";
+import { clearOrder } from "../../redux/order/orderSlice";
 
 import bg from "../../assets/image/bg.jpg";
 
 export default function CatalogPage() {
-  const [cards, setCards] = useState(null);
   const [page, setPage] = useState(1);
-  const [visibleLoadMoreBtn, setVisibleLoadMoreBtn] = useState(true);
-  console.log(cards);
+  const [filCars, setFilCars] = useState([]);
+  const [filters, setFilters] = useState(null);
+  const cars = useSelector(selectCars);
+  const isLoading = useSelector(selectLoading);
+  const isShowLoadBtn = useSelector(selectIsShowLoadBtn);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(clearOrder());
+    // dispatch(clearCarList());
     const fetching = async () => {
-      const res = await fetchAdverts(page);
-      if (res.length < 8) {
-        setVisibleLoadMoreBtn(false);
-      }
-      if (page !== 1) {
-        setCards((prev) => [...prev, ...res]);
-      } else {
-        setCards(res);
-      }
+      dispatch(fetchCars(page));
+      // if (res.length < 8) {
+      //   setVisibleLoadMoreBtn(false);
+      // }
+      // if (page !== 1) {
+      //   setCards((prev) => [...prev, ...res]);
+      // } else {
+      //   setCards(res);
+      // }
     };
     fetching();
-  }, [page]);
+  }, [dispatch, page]);
+
+  // useEffect(() => {
+  //   if (filters) {
+  //     const {
+  //       brand = "",
+  //       price = "",
+  //       mileageFrom = "",
+  //       mileageTo = "",
+  //     } = filters;
+
+  //     if (brand) {
+  //       const filteredCars = cards.filter(
+  //         (card) => card.make.toLowerCase() === brand.value.toLowerCase()
+  //       );
+  //       setFilCars((prev) => (prev = filteredCars));
+  //       console.log("filteredCars-brand", filteredCars);
+  //     } else {
+  //       setFilCars(cards);
+  //     }
+  //     if (price) {
+  //       const filteredCars = filCars.filter((car) => {
+  //         const rentalPrice = Number(car.rentalPrice.slice(1));
+  //         const numericPrice = Number(price.value);
+  //         return rentalPrice <= numericPrice;
+  //       });
+  //       setFilCars((prev) => (prev = filteredCars));
+  //       console.log("filteredCars-numericPrice", filteredCars);
+  //     }
+  //     if (mileageFrom) {
+  //       const filteredCars = filCars.filter(
+  //         (car) => car.mileage >= Number(mileageFrom)
+  //       );
+  //       setFilCars((prev) => (prev = filteredCars));
+  //       console.log("filteredCars-mileageFrom", filteredCars);
+  //     }
+  //     if (mileageTo) {
+  //       const filteredCars = filCars.filter(
+  //         (car) => car.mileage <= Number(mileageTo)
+  //       );
+  //       setFilCars((prev) => (prev = filteredCars));
+  //       console.log("filteredCars-mileageTo", filteredCars);
+  //     }
+  //   } else {
+  //     setFilCars(cards);
+  //   }
+  // }, [cards, filCars, filters]);
+
+  // const setFilter = (filter) => {
+  //   setFilters(filter);
+  //   setFilteredCars();
+  // };
+
+  // const setFilteredCars = () => {
+  //   const {
+  //     brand = "",
+  //     price = "",
+  //     mileageFrom = "",
+  //     mileageTo = "",
+  //   } = filters;
+
+  //   if (brand) {
+  //     const filteredCars = cards.filter(
+  //       (card) => card.make.toLowerCase() === brand.value.toLowerCase()
+  //     );
+  //     setFilCars((prev) => (prev = filteredCars));
+  //     console.log("filteredCars-brand", filteredCars);
+  //   } else {
+  //     setFilCars(cards);
+  //   }
+  //   if (price) {
+  //     const filteredCars = filCars.filter((car) => {
+  //       const rentalPrice = Number(car.rentalPrice.slice(1));
+  //       const numericPrice = Number(price.value);
+  //       return rentalPrice <= numericPrice;
+  //     });
+  //     setFilCars((prev) => (prev = filteredCars));
+  //     console.log("filteredCars-numericPrice", filteredCars);
+  //   }
+  //   if (mileageFrom) {
+  //     const filteredCars = filCars.filter(
+  //       (car) => car.mileage >= Number(mileageFrom)
+  //     );
+  //     setFilCars((prev) => (prev = filteredCars));
+  //     console.log("filteredCars-mileageFrom", filteredCars);
+  //   }
+  //   if (mileageTo) {
+  //     const filteredCars = filCars.filter(
+  //       (car) => car.mileage <= Number(mileageTo)
+  //     );
+  //     setFilCars((prev) => (prev = filteredCars));
+  //     console.log("filteredCars-mileageTo", filteredCars);
+  //   }
+  // };
 
   return (
     <div
@@ -39,9 +147,9 @@ export default function CatalogPage() {
       }}
     >
       <div className="styledContainer flex flex-col justify-center items-center">
-        <SearchBar />
-        {cards && <CardList cards={cards} />}
-        {visibleLoadMoreBtn && cards && (
+        <SearchBar submit={() => {}} />
+        {cars && <CardList cards={cars} />}
+        {isShowLoadBtn && cars && (
           <LoadMoreBtn onClick={() => setPage((prev) => prev + 1)} />
         )}
       </div>

@@ -3,8 +3,15 @@ import noImg from "../../../assets/image/noImage.jpg";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import ModalWindow from "../../ModalWindow/ModalWindow";
 
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../../redux/favorite/favoriteSlice";
+import { selectFavorite } from "../../../redux/favorite/favoriteSelectors";
+
 export default function CardItem({ item }) {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const favoriteList = useSelector(selectFavorite);
+  const isFavorite = favoriteList.some((el) => el.id === item.id);
 
   const {
     year,
@@ -42,7 +49,14 @@ export default function CardItem({ item }) {
           loading="lazy"
           className="w-full h-full object-cover "
         />
-        <div className=" cursor-pointer fill-transparent hover:fill-blue_secondary absolute w-[18px] h-[18px] top-[14px] right-[14px]">
+        <div
+          className={` ${
+            isFavorite ? "fill-blue_secondary" : "fill-transparent"
+          } cursor-pointer  hover:fill-blue_secondary hover:scale-110 transition-all duration-300 absolute w-[18px] h-[18px] top-[14px] right-[14px]`}
+          onClick={() => {
+            dispatch(toggleFavorite(item));
+          }}
+        >
           <Heart />
         </div>
       </div>
@@ -68,7 +82,7 @@ export default function CardItem({ item }) {
         {accessories[0]}
       </div>
       <button
-        className=" font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl"
+        className=" font-Manrope text-sm font-semibold text-white w-full py-3 bg-blue_primary hover:bg-blue_secondary rounded-xl transition-all duration-300"
         onClick={() => setIsOpen(!modalIsOpen)}
       >
         Learn more

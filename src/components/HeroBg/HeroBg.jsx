@@ -7,7 +7,7 @@ export default function HeroBg({ children }) {
     <div
       className="w-full h-screen"
       style={{
-        backgroundImage: `url(${bg2})`,
+        backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",

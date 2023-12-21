@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function OrderInfo({ card = [] }) {
+export default function OrderInfo({ card = {} }) {
   const {
     id,
     year,
@@ -54,14 +54,14 @@ export default function OrderInfo({ card = [] }) {
         Accessories and functionalities:
       </p>
       <div className="mt-2 flex flex-wrap font-Manrope text-xs text-text_primaty">
-        {accessories.map((item) => (
-          <span>
-            {item}
+        {accessories.map((list) => (
+          <span key={list}>
+            {list}
             <span className=" px-[6px]">|</span>
           </span>
         ))}
         {functionalities.map((item) => (
-          <span>
+          <span key={item}>
             {item}
             <span className=" px-[6px]">|</span>
           </span>
@@ -72,7 +72,10 @@ export default function OrderInfo({ card = [] }) {
       </p>{" "}
       <div className=" mt-2 flex flex-wrap gap-2">
         {rentalConditionsArray.map((item) => (
-          <span className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]">
+          <span
+            key={item}
+            className="bg-select_bg text-xs text-text_header py-[7px] px-[14px] rounded-[35px]"
+          >
             {item}
           </span>
         ))}

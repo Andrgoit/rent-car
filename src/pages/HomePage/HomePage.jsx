@@ -1,11 +1,14 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { HeroBg, Hero } from "../../components";
-// import { toast } from "react-toastify";
+import { clearOrder } from "../../redux/order/orderSlice";
+import { useDispatch } from "react-redux";
 
 export default function HomePage() {
-  // useEffect(() => {
-  //   toast.error("Это ознакомительный сайт. Не оставляйте свои личные данные");
-  // }, []);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearOrder());
+  }, [dispatch]);
   return (
     <>
       <HeroBg>

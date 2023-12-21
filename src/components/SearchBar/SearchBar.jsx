@@ -3,17 +3,23 @@ import PriceSelector from "./PriceSelector/PriceSelector";
 import MileageSelector from "./MileageSelector/MileageSelector";
 import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar({ submit }) {
   const [brand, setBrand] = useState(null);
   const [price, setPrice] = useState(null);
   const [mileageFrom, setMileageFrom] = useState(null);
   const [mileageTo, setMileageTo] = useState(null);
 
+  const resetForm = () => {
+    setBrand(null);
+    setPrice(null);
+    setMileageFrom(null);
+    setMileageTo(null);
+  };
+
   const handlerSubmit = () => {
-    console.log("brand", brand);
-    console.log("price", price);
-    console.log("mileageFrom", mileageFrom);
-    console.log("mileageTo", mileageTo);
+    console.log({ brand, price, mileageFrom, mileageTo });
+    submit({ brand, price, mileageFrom, mileageTo });
+    resetForm();
   };
 
   const changeMileage = (e) => {
