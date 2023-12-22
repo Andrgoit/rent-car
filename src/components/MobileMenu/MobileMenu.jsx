@@ -1,6 +1,4 @@
-import React from "react";
 import { createPortal } from "react-dom";
-
 import { IoMdClose } from "react-icons/io";
 
 export default function MobileMenu({ children, onClose }) {
