@@ -11,6 +11,8 @@ import {
   selectPage,
 } from "../../redux/cars/carsSelectors";
 
+import { selectFilter } from "../../redux/filter/filterSelectors";
+
 import { fetchCars } from "../../redux/cars/carsOperations";
 import { clearCarList, nextPage, resetPage } from "../../redux/cars/carsSlice";
 import { clearOrder } from "../../redux/order/orderSlice";
@@ -19,11 +21,11 @@ import bg from "../../assets/image/bg.jpg";
 
 export default function CatalogPage() {
   const [filCars, setFilCars] = useState([]);
-  const [filters, setFilters] = useState(null);
   const cars = useSelector(selectCars);
   const isLoading = useSelector(selectLoading);
   const isShowLoadBtn = useSelector(selectIsShowLoadBtn);
   const page = useSelector(selectPage);
+  const filters = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,98 +37,50 @@ export default function CatalogPage() {
     dispatch(fetchCars(page));
   }, [dispatch, page]);
 
-  // useEffect(() => {
-  //   if (filters) {
-  //     const {
-  //       brand = "",
-  //       price = "",
-  //       mileageFrom = "",
-  //       mileageTo = "",
-  //     } = filters;
+  const filteredCars = (filters) => {
+    const { brand, price, mileageFrom, mileageTo } = filters;
+    console.log("filters", filters);
 
-  //     if (brand) {
-  //       const filteredCars = cards.filter(
-  //         (card) => card.make.toLowerCase() === brand.value.toLowerCase()
-  //       );
-  //       setFilCars((prev) => (prev = filteredCars));
-  //       console.log("filteredCars-brand", filteredCars);
-  //     } else {
-  //       setFilCars(cards);
-  //     }
-  //     if (price) {
-  //       const filteredCars = filCars.filter((car) => {
-  //         const rentalPrice = Number(car.rentalPrice.slice(1));
-  //         const numericPrice = Number(price.value);
-  //         return rentalPrice <= numericPrice;
-  //       });
-  //       setFilCars((prev) => (prev = filteredCars));
-  //       console.log("filteredCars-numericPrice", filteredCars);
-  //     }
-  //     if (mileageFrom) {
-  //       const filteredCars = filCars.filter(
-  //         (car) => car.mileage >= Number(mileageFrom)
-  //       );
-  //       setFilCars((prev) => (prev = filteredCars));
-  //       console.log("filteredCars-mileageFrom", filteredCars);
-  //     }
-  //     if (mileageTo) {
-  //       const filteredCars = filCars.filter(
-  //         (car) => car.mileage <= Number(mileageTo)
-  //       );
-  //       setFilCars((prev) => (prev = filteredCars));
-  //       console.log("filteredCars-mileageTo", filteredCars);
-  //     }
-  //   } else {
-  //     setFilCars(cards);
-  //   }
-  // }, [cards, filCars, filters]);
+    if (brand) {
+      setFilCars(
+        (prev) =>
+          (prev = cars.filter(
+            (card) => card.make.toLowerCase() === brand.value.toLowerCase()
+          ))
+      );
+    } else {
+      setFilCars(cars);
+    }
+    if (price) {
+      setFilCars(
+        (prev) =>
+          (prev = prev.filter((car) => {
+            const rentalPrice = Number(car.rentalPrice.slice(1));
+            const numericPrice = Number(price.value);
+            return rentalPrice <= numericPrice;
+          }))
+      );
+    }
+    if (mileageFrom) {
+      setFilCars(
+        (prev) =>
+          (prev = prev.filter((car) => car.mileage >= Number(mileageFrom)))
+      );
+    }
+    if (mileageTo) {
+      setFilCars(
+        (prev) =>
+          (prev = prev.filter((car) => car.mileage <= Number(mileageTo)))
+      );
+    }
+  };
 
-  // const setFilter = (filter) => {
-  //   setFilters(filter);
-  //   setFilteredCars();
-  // };
-
-  // const setFilteredCars = () => {
-  //   const {
-  //     brand = "",
-  //     price = "",
-  //     mileageFrom = "",
-  //     mileageTo = "",
-  //   } = filters;
-
-  //   if (brand) {
-  //     const filteredCars = cards.filter(
-  //       (card) => card.make.toLowerCase() === brand.value.toLowerCase()
-  //     );
-  //     setFilCars((prev) => (prev = filteredCars));
-  //     console.log("filteredCars-brand", filteredCars);
-  //   } else {
-  //     setFilCars(cards);
-  //   }
-  //   if (price) {
-  //     const filteredCars = filCars.filter((car) => {
-  //       const rentalPrice = Number(car.rentalPrice.slice(1));
-  //       const numericPrice = Number(price.value);
-  //       return rentalPrice <= numericPrice;
-  //     });
-  //     setFilCars((prev) => (prev = filteredCars));
-  //     console.log("filteredCars-numericPrice", filteredCars);
-  //   }
-  //   if (mileageFrom) {
-  //     const filteredCars = filCars.filter(
-  //       (car) => car.mileage >= Number(mileageFrom)
-  //     );
-  //     setFilCars((prev) => (prev = filteredCars));
-  //     console.log("filteredCars-mileageFrom", filteredCars);
-  //   }
-  //   if (mileageTo) {
-  //     const filteredCars = filCars.filter(
-  //       (car) => car.mileage <= Number(mileageTo)
-  //     );
-  //     setFilCars((prev) => (prev = filteredCars));
-  //     console.log("filteredCars-mileageTo", filteredCars);
-  //   }
-  // };
+  useEffect(() => {
+    if (filters) {
+      filteredCars(filters);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   return (
     <div
@@ -140,8 +94,8 @@ export default function CatalogPage() {
       }}
     >
       <div className="styledContainer flex flex-col justify-center items-center">
-        <SearchBar submit={() => {}} />
-        {cars && <CardList cards={cars} />}
+        <SearchBar />
+        {cars && <CardList cards={filters ? filCars : cars} />}
         {isShowLoadBtn && cars && (
           <LoadMoreBtn onClick={() => dispatch(nextPage())} />
         )}

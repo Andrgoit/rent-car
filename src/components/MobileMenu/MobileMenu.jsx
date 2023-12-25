@@ -3,11 +3,12 @@ import { IoMdClose } from "react-icons/io";
 
 export default function MobileMenu({ children, onClose }) {
   const root = document.getElementById("modal");
+
   return (
     <>
       {" "}
       {createPortal(
-        <div className=" z-20 absolute left-0 top-0 right-0 bottom-0  bg-black/50 ">
+        <div className=" z-20 fixed left-0 top-0 right-0 bottom-0  bg-black/50 ">
           <div className=" h-screen absolute top-0 right-0 backdrop-blur-md px-5 rounded-l-lg">
             <div
               onClick={onClose}

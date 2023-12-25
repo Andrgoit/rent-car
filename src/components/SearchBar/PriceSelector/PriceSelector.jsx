@@ -1,6 +1,7 @@
 import Select from "react-select";
 
 const options = [
+  { label: "", value: null },
   { label: "10", value: "10" },
   { label: "20", value: "20" },
   { label: "30", value: "30" },
@@ -11,8 +12,11 @@ const options = [
   { label: "80", value: "80" },
   { label: "90", value: "90" },
   { label: "100", value: "100" },
-  { label: "110", value: "110" },
-  { label: "120", value: "120" },
+  { label: "150", value: "150" },
+  { label: "200", value: "200" },
+  { label: "250", value: "250" },
+  { label: "300", value: "300" },
+  { label: "350", value: "350" },
 ];
 
 const customStyles = {

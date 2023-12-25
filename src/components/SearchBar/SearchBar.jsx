@@ -1,13 +1,19 @@
 import BrandSelector from "./BrandSelector/BrandSelector";
 import PriceSelector from "./PriceSelector/PriceSelector";
 import MileageSelector from "./MileageSelector/MileageSelector";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function SearchBar({ submit }) {
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter, resetFilter } from "../../redux/filter/filterSlice";
+import { selectFilter } from "../../redux/filter/filterSelectors";
+
+export default function SearchBar() {
   const [brand, setBrand] = useState(null);
   const [price, setPrice] = useState(null);
   const [mileageFrom, setMileageFrom] = useState(null);
   const [mileageTo, setMileageTo] = useState(null);
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilter);
 
   const resetForm = () => {
     setBrand(null);
@@ -18,9 +24,12 @@ export default function SearchBar({ submit }) {
 
   const handlerSubmit = () => {
     console.log({ brand, price, mileageFrom, mileageTo });
-    submit({ brand, price, mileageFrom, mileageTo });
-    resetForm();
+    dispatch(setFilter({ brand, price, mileageFrom, mileageTo }));
   };
+
+  useEffect(() => {
+    dispatch(resetFilter());
+  }, [dispatch]);
 
   const changeMileage = (e) => {
     const { name, value } = e.target;
@@ -45,6 +54,14 @@ export default function SearchBar({ submit }) {
         className=" py-3 px-11 text-white bg-blue_primary hover:bg-blue_secondary rounded-xl"
       >
         Search
+      </button>
+      <button
+        disabled={!filters}
+        onClick={() => dispatch(resetFilter())}
+        className="py-3 px-11 text-white rounded-xl bg-red-500 hover:bg-red-800
+          disabled:bg-stone-400 disabled:cursor-not-allowed"
+      >
+        Reset
       </button>
     </div>
   );
