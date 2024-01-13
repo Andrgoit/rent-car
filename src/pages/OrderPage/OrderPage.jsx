@@ -1,14 +1,17 @@
+import React, { useEffect, useState } from "react";
 import bg from "../../assets/image/bg.jpg";
+import { toast } from "react-toastify";
 
 import OrderInfo from "../../components/OrderInfo/OrderInfo";
 import OrderForm from "../../components/OrderForm/OrderForm";
-import { toast } from "react-toastify";
+import ContactInfoInput from "../../components/ContactInfoInput/ContactInfoInput";
 
 import { useSelector } from "react-redux";
 import { selectOrder } from "../../redux/order/orderSelectors";
-import { useEffect } from "react";
 
 export default function OrderPage() {
+  const [mail, setMail] = useState("");
+  const [phone, setPhone] = useState("");
   const card = useSelector(selectOrder);
 
   useEffect(() => {
@@ -16,6 +19,23 @@ export default function OrderPage() {
       "This is an introductory site. Don't share your real payment details here!"
     );
   }, []);
+
+  const ContactInfoInputHandler = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "mail":
+        setMail(value);
+        break;
+
+      case "phone":
+        setPhone(value);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div
@@ -35,6 +55,11 @@ export default function OrderPage() {
           ) : (
             <p>Sorry, but nothing has been selected to order</p>
           )}
+          <ContactInfoInput
+            onChange={ContactInfoInputHandler}
+            mail={mail}
+            phone={phone}
+          />
           {card && <OrderForm price={card.rentalPrice} />}
         </div>
       </div>
