@@ -9,6 +9,7 @@ import {
   selectLoading,
   selectIsShowLoadBtn,
   selectPage,
+  selectError,
 } from "../../redux/cars/carsSelectors";
 
 import { selectFilter } from "../../redux/filter/filterSelectors";
@@ -25,6 +26,7 @@ export default function CatalogPage() {
   const isLoading = useSelector(selectLoading);
   const isShowLoadBtn = useSelector(selectIsShowLoadBtn);
   const page = useSelector(selectPage);
+  const isError = useSelector(selectError);
   const filters = useSelector(selectFilter);
   const dispatch = useDispatch();
 
@@ -94,10 +96,18 @@ export default function CatalogPage() {
       }}
     >
       <div className="styledContainer flex flex-col justify-center items-center">
-        <SearchBar />
-        {cars && <CardList cards={filters ? filCars : cars} />}
-        {isShowLoadBtn && cars && (
-          <LoadMoreBtn onClick={() => dispatch(nextPage())} />
+        {!isError ? (
+          <>
+            <SearchBar />
+            {cars && <CardList cards={filters ? filCars : cars} />}
+            {isShowLoadBtn && cars && (
+              <LoadMoreBtn onClick={() => dispatch(nextPage())} />
+            )}
+          </>
+        ) : (
+          <p className="mt-24 text-white">
+            Sorry, but there was an error. Try later.
+          </p>
         )}
       </div>
     </div>

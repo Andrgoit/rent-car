@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCars } from "./carsOperations";
+import { toast } from "react-toastify";
 
 const initialState = {
   cars: [],
@@ -41,6 +42,7 @@ export const carsSlice = createSlice({
     builder.addCase(fetchCars.rejected, (state, { error }) => {
       state.isLoading = false;
       state.error = error;
+      toast.error("Oops! Something wrong!");
     });
   },
 });
