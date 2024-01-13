@@ -6,8 +6,12 @@ const fetchAdverts = async (page = 1) => {
   //   headers: { "content-type": "application/json" },
   //   params: { page: `${page}`, limit: 8 },
   // });
-  const { data } = await axios.get(`${URL}?page=${page}&limit=8`);
-  return data;
+  try {
+    const { data } = await axios.get(`${URL}?page=${page}&limit=8`);
+    return data;
+  } catch (error) {
+    throw new Error();
+  }
 };
 
 export default fetchAdverts;

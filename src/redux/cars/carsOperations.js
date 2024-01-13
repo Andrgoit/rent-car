@@ -6,6 +6,6 @@ export const fetchCars = createAsyncThunk("cars/fetchCars", async (page, _) => {
     const response = await fetchAdverts(page);
     return response;
   } catch (error) {
-    console.log(error);
+    throw new Error();
   }
 });
