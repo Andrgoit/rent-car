@@ -31,11 +31,13 @@ export default function OrderPage() {
       <div className="pt-32 text-white styledContainer flex flex-col justify-center items-center">
         <div className=" w-full backdrop-blur-md border-black  bg-black/50 rounded-[14px] flex flex-col items-center">
           {card ? (
-            <OrderInfo card={card} />
+            <>
+              <OrderInfo card={card} />
+              <OrderForm price={card.rentalPrice} />
+            </>
           ) : (
             <p>Sorry, but nothing has been selected to order</p>
           )}
-          {card && <OrderForm price={card.rentalPrice} />}
         </div>
       </div>
     </div>
